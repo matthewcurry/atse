@@ -11,7 +11,6 @@
 %global ohpc_bootstrap 1
 
 %include %{_sourcedir}/OHPC_macros
-%{!?PROJ_DELIM: %global PROJ_DELIM -ohpc}
 
 %define pname lmod
 
@@ -128,7 +127,7 @@ export BASH_ENV=%{OHPC_ADMIN}/lmod/lmod/init/bash
 . %{OHPC_ADMIN}/lmod/lmod/init/bash >/dev/null
 
 # Load baseline OpenHPC environment
-module try-add ohpc
+module try-add %{PROJ_NAME}
 
 EOF
 
@@ -165,7 +164,7 @@ endif
 source %{OHPC_ADMIN}/lmod/lmod/init/csh >/dev/null
 
 # Load baseline OpenHPC environment
-module try-add ohpc 
+module try-add %{PROJ_NAME}
 
 EOF
 
