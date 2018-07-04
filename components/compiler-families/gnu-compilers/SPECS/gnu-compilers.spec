@@ -9,6 +9,7 @@
 #----------------------------------------------------------------------------eh-
 
 %include %{_sourcedir}/OHPC_macros
+%{!?compiler_family: %global compiler_family gnu8}
 
 %if "%{compiler_family}" == "gnu8"
 %global gnu_version 8.1.0
