@@ -15,7 +15,7 @@
 %global gnu_major_ver 8
 %global gnu_release 1
 %global pname gnu8-compilers
-%global source https://ftp.gnu.org/gnu/gcc/gcc-%{gnu_version}/gcc-%{gnu_version}.tar.gz
+%global source https://ftp.gnu.org/gnu/gcc/gcc-%{gnu_version}/gcc-%{gnu_version}.tar.xz
 %global source_directory gcc-%{version}
 %endif
 
@@ -50,7 +50,7 @@ License:   GNU GPL
 Group:     %{PROJ_NAME}/compiler-families
 URL:       http://gcc.gnu.org/
 %if "%{compiler_family}" != "dts6"
-Source0:   https://ftp.gnu.org/gnu/gcc/gcc-8.1.0/gcc-8.1.0.tar.gz
+Source0:   %{source}
 Source1:   https://ftp.gnu.org/gnu/gmp/gmp-%{gmp_version}.tar.bz2
 Source2:   https://ftp.gnu.org/gnu/mpc/mpc-%{mpc_version}.tar.gz
 Source3:   https://ftp.gnu.org/gnu/mpfr/mpfr-%{mpfr_version}.tar.gz
