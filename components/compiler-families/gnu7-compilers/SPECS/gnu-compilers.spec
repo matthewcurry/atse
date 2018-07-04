@@ -1,3 +1,5 @@
+%global compiler_family gnu7
+
 #----------------------------------------------------------------------------bh-
 # This RPM .spec file is part of the OpenHPC project.
 #
