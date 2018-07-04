@@ -9,6 +9,14 @@
 #----------------------------------------------------------------------------eh-
 
 %include %{_sourcedir}/OHPC_macros
+
+# Set the default 'compiler_family' if one hasn't been set already.
+#
+# OBS download_files service does not follow %include directives, so the
+# default compiler_family defined in OHPC_macros above is not seen.  This
+# leads to an rpm build failure due to the gcc tarball (Sources0) not being
+# downloaded.  This is a hack workaround.  The compiler_family here must
+# be the same as the default compiler_family set in OHPC_macros.
 %{!?compiler_family: %global compiler_family gnu8}
 
 %if "%{compiler_family}" == "gnu8"
