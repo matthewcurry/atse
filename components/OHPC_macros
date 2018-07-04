@@ -16,7 +16,7 @@
 
 # Top-level OpenHPC installation paths
 %global OHPC_BUILD 1
-%global PROJ_NAME       ohpc
+%global PROJ_NAME       atse
 %global OHPC_HOME       /opt/%{PROJ_NAME}
 %global OHPC_ADMIN      %{OHPC_HOME}/admin
 %global OHPC_PUB        %{OHPC_HOME}/pub
@@ -30,7 +30,7 @@
 %global debug_package   %{nil}
 %global dist            .ohpc
 
-%{!?PROJ_DELIM: %global PROJ_DELIM -ohpc}
+%{!?PROJ_DELIM: %global PROJ_DELIM -atse}
 
 DocDir:    %{OHPC_PUB}/doc/contrib
 
@@ -43,13 +43,13 @@ DocDir:    %{OHPC_PUB}/doc/contrib
 # OpenHPC packages require ohpc-filesystem which defines the basic
 # installation path layout
 %if 0%{?ohpc_bootstrap} == 0
-Requires: ohpc-filesystem
+Requires: %{PROJ_NAME}-filesystem
 %endif
 
 # OpenHPC packages also require ohpc-buildroot to access macros used to define
 # compiler and MPI families
 %if 0%{?ohpc_bootstrap} == 0
-BuildRequires: ohpc-buildroot
+BuildRequires: ${PROJ_NAME}-buildroot
 %endif
 
 # OpenHPC convention: the default build configuration for compiler/MPI
