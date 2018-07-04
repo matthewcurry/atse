@@ -47,7 +47,7 @@ BuildRequires: tcl
 %if 0%{?sles_version} || 0%{?suse_version}
 BuildRequires: procps
 %endif
-   
+
 %if 0%{?sles_version} || 0%{?suse_version}
 Conflicts: Modules
 %else
@@ -68,7 +68,7 @@ Requires: lua-posix%{PROJ_DELIM}
 
 %define debug_package %{nil}
 
-%description 
+%description
 Lmod: An Environment Module System based on Lua, Reads TCL Modules,
 Supports a Software Hierarchy
 
@@ -156,7 +156,7 @@ setenv LMOD_PREPEND_BLOCK "normal"
 
 if ( \`id -u\` == "0" ) then
    setenv MODULEPATH "%{OHPC_ADMIN}/modulefiles:%{OHPC_MODULES}"
-else   
+else
    setenv MODULEPATH "%{OHPC_MODULES}"
 endif
 
