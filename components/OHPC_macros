@@ -49,7 +49,7 @@ Requires: %{PROJ_NAME}-filesystem
 # OpenHPC packages also require ohpc-buildroot to access macros used to define
 # compiler and MPI families
 %if 0%{?ohpc_bootstrap} == 0
-BuildRequires: ${PROJ_NAME}-buildroot
+BuildRequires: %{PROJ_NAME}-buildroot
 %endif
 
 # OpenHPC convention: the default build configuration for compiler/MPI
