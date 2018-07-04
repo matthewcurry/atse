@@ -15,7 +15,7 @@
 %global gnu_major_ver 8
 %global gnu_release 1
 %global pname gnu8-compilers
-%global source https://ftp.gnu.org/gnu/gcc/gcc-%{gnu_version}/gcc-%{gnu_version}.tar.xz
+%global source https://ftp.gnu.org/gnu/gcc/gcc-%{gnu_version}/gcc-%{gnu_version}.tar.gz
 %global source_directory gcc-%{version}
 %endif
 
