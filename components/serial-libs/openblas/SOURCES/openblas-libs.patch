@@ -1,0 +1,11 @@
+--- OpenBLAS-0.2.20/f_check	2017-07-23 21:03:35.000000000 -0700
++++ OpenBLAS-0.2.20.patch/f_check	2017-08-01 13:03:03.000000000 -0700
+@@ -340,7 +340,7 @@
+ }
+ 
+ if ($vendor eq "INTEL"){
+-    $linker_a .= "-lgfortran"
++    #$linker_a .= "-lgfortran"
+ }
+ 
+ if ($vendor eq "FLANG"){
