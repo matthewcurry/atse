@@ -45,8 +45,46 @@ CFLAGS="-fPIC -O3 -g" CXXFLAGS="-fPIC -O3 -g" ./configure --prefix=%{install_pat
 %install
 %ohpc_setup_compiler
 
-which gcc
 make %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT install
+
+# OpenHPC module file
+%{__mkdir_p} %{buildroot}%{OHPC_MODULES}/%{pname}
+%{__cat} << EOF > %{buildroot}/%{OHPC_MODULES}/%{pname}/%{version}
+#%Module1.0#####################################################################
+
+proc ModulesHelp { } {
+
+        puts stderr " "
+        puts stderr "This module loads the %{pname} library"
+        puts stderr "\nVersion %{version}\n"
+
+}
+module-whatis "Name: %{pname}"
+module-whatis "Version: %{version}"
+module-whatis "Category: compression library"
+module-whatis "Description: %{summary}"
+module-whatis "URL %{url}"
+
+set     version             %{version}
+
+prepend-path    PATH                %{install_path}/bin
+prepend-path    LD_LIBRARY_PATH     %{install_path}/lib
+prepend-path    MANPATH             %{install_path}/share/man
+
+setenv          %{PNAME}_DIR        %{install_path}
+setenv          %{PNAME}_BIN        %{install_path}/bin
+setenv          %{PNAME}_INC        %{install_path}/include
+setenv          %{PNAME}_LIB        %{install_path}/lib
+
+EOF
+
+%{__cat} << EOF > %{buildroot}/%{OHPC_MODULES}/%{pname}/.version.%{version}
+#%Module1.0#####################################################################
+##
+## version file for %{pname}-%{version}
+##
+set     ModulesVersion      "%{version}"
+EOF
 
 %{__mkdir_p} ${RPM_BUILD_ROOT}/%{_docdir}
 
