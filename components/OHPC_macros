@@ -145,9 +145,9 @@ Requires:      %{python_prefix}
 %endif
 
 %global ohpc_setup_compiler %{expand:\
-    . %{OHPC_ADMIN}/ohpc/OHPC_setup_compiler %{compiler_family} \
+    . %{OHPC_ADMIN}/atse/ATSE_setup_compiler %{compiler_family} \
     %if 0%{?ohpc_mpi_dependent} == 1 \
-        . %{OHPC_ADMIN}/ohpc/OHPC_setup_mpi %{mpi_family} \
+        . %{OHPC_ADMIN}/atse/ATSE_setup_mpi %{mpi_family} \
     %endif \
 }
 
