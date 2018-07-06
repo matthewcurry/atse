@@ -63,8 +63,10 @@ Patch2: lmod.site.patch
 # Known dependencies
 Requires: lua >= %{luaver}
 Requires: tcl
-Requires: lua-filesystem%{PROJ_DELIM} or lua-filesystem-ohpc
-Requires: lua-posix%{PROJ_DELIM} or lua-posix-ohpc
+#Requires: lua-filesystem%{PROJ_DELIM}
+#Requires: lua-posix%{PROJ_DELIM}
+Recommends: lua-filesystem%{PROJ_DELIM}
+Recommends: lua-posix%{PROJ_DELIM}
 
 %define debug_package %{nil}
 
