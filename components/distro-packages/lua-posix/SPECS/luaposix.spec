@@ -39,7 +39,7 @@ BuildRequires:  lua >= %{luaver}, lua-devel >= %{luaver}
 BuildRequires:  ncurses-devel
 %if 0%{?suse_version} <= 1220
 BuildRequires:  lua-bit%{PROJ_DELIM}
-Requires:       lua-bit%{PROJ_DELIM} or lua-bit-ohpc
+Requires:       lua-bit%{PROJ_DELIM}
 %endif
 Requires:       lua >= %{luaver}
 BuildRequires:  autoconf
