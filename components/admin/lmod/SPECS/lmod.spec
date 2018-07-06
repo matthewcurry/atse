@@ -65,8 +65,8 @@ Requires: lua >= %{luaver}
 Requires: tcl
 #Requires: lua-filesystem%{PROJ_DELIM}
 #Requires: lua-posix%{PROJ_DELIM}
-Recommends: lua-filesystem%{PROJ_DELIM}
-Recommends: lua-posix%{PROJ_DELIM}
+Requires: lua-filesystem-ohpc
+Requires: lua-posix-ohpc
 
 %define debug_package %{nil}
 
