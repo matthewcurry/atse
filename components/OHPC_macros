@@ -31,6 +31,7 @@
 %global dist            .ohpc
 
 %{!?PROJ_DELIM: %global PROJ_DELIM -atse}
+%{!?OHPC_PROJ_DELIM: %global OHPC_PROJ_DELIM -ohpc}
 
 DocDir:    %{OHPC_PUB}/doc/contrib
 

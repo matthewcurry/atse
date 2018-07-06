@@ -24,7 +24,7 @@
 
 %global version_exp 1_6_3
 
-Name:           %{pname}%{PROJ_DELIM}
+Name:           %{pname}%{OHPC_PROJ_DELIM}
 Version:        1.6.3
 Release:        0%{?dist}
 License:        MIT

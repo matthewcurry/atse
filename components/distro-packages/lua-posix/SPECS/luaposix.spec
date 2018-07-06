@@ -23,7 +23,7 @@
 %define luapkgdir %{_datadir}/lua/%{luaver}
 %define debug_package %{nil}
 
-Name:           %{pname}%{PROJ_DELIM}
+Name:           %{pname}%{OHPC_PROJ_DELIM}
 Version:        33.2.1
 Release:        1%{?dist}
 Summary:        POSIX library for Lua
@@ -38,8 +38,8 @@ BuildRoot:      %{_tmppath}/luaposix-%{version}-%{release}-root-
 BuildRequires:  lua >= %{luaver}, lua-devel >= %{luaver}
 BuildRequires:  ncurses-devel
 %if 0%{?suse_version} <= 1220
-BuildRequires:  lua-bit%{PROJ_DELIM}
-Requires:       lua-bit%{PROJ_DELIM}
+BuildRequires:  lua-bit%{OHPC_PROJ_DELIM}
+Requires:       lua-bit%{OHPC_PROJ_DELIM}
 %endif
 Requires:       lua >= %{luaver}
 BuildRequires:  autoconf

@@ -23,7 +23,7 @@
 %define luapkgdir %{_datadir}/lua/%{luaver}
 %define debug_package %{nil}
 
-Name:           %{pname}%{PROJ_DELIM}
+Name:           %{pname}%{OHPC_PROJ_DELIM}
 Version:        1.0.2
 Release:        1%{?dist}
 Summary:        Module for Lua which adds bitwise operations on numbers
