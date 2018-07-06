@@ -93,8 +93,5 @@ EOF
 
 %files
 %defattr(-,root,root,-)
-%dir %{OHPC_HOME}
-%{OHPC_LIBS}
-%doc README
-%doc ChangeLog
-%doc FAQ
+%{OHPC_PUB}
+%doc README ChangeLog FAQ
