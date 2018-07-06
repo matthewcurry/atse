@@ -8,6 +8,7 @@
 #
 #----------------------------------------------------------------------------eh-
 
+%define ohpc_compiler_dependent 1
 %include %{_sourcedir}/OHPC_macros
 
 %define pname zlib
@@ -37,10 +38,16 @@ virtually any computer hardware and operating system.
 %setup -n %{pname}-%{version}
 
 %build
+%ohpc_setup_compiler
+
 CFLAGS="-fPIC -O3 -g" CXXFLAGS="-fPIC -O3 -g" ./configure --prefix=%{install_path}
 
 %install
+%ohpc_setup_compiler
+
+which gcc
 make %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT install
+
 %{__mkdir_p} ${RPM_BUILD_ROOT}/%{_docdir}
 
 %clean
