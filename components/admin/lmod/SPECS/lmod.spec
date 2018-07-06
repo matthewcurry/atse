@@ -63,8 +63,8 @@ Patch2: lmod.site.patch
 # Known dependencies
 Requires: lua >= %{luaver}
 Requires: tcl
-Requires: lua-filesystem%{PROJ_DELIM}
-Requires: lua-posix%{PROJ_DELIM}
+Requires: lua-filesystem%{PROJ_DELIM} or lua-filesystem-ohpc
+Requires: lua-posix%{PROJ_DELIM} or lua-posix-ohpc
 
 %define debug_package %{nil}
 
@@ -92,7 +92,7 @@ make DESTDIR=$RPM_BUILD_ROOT install
 # Customize startup script to suit
 
 %{__mkdir_p} %{buildroot}/%{_sysconfdir}/profile.d
-%{__cat} << EOF > %{buildroot}/%{_sysconfdir}/profile.d/lmod.sh
+%{__cat} << EOF > %{buildroot}/%{_sysconfdir}/profile.d/atse-lmod.sh
 #!/bin/sh
 # -*- shell-script -*-
 ########################################################################
@@ -131,7 +131,7 @@ module try-add %{PROJ_NAME}
 
 EOF
 
-%{__cat} << EOF > %{buildroot}/%{_sysconfdir}/profile.d/lmod.csh
+%{__cat} << EOF > %{buildroot}/%{_sysconfdir}/profile.d/atse-lmod.csh
 #!/bin/sh
 # -*- shell-script -*-
 ########################################################################
@@ -179,8 +179,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{OHPC_HOME}
 %dir %{OHPC_ADMIN}
 %{OHPC_ADMIN}/lmod
-%config %{_sysconfdir}/profile.d/lmod.sh
-%config %{_sysconfdir}/profile.d/lmod.csh
+%config %{_sysconfdir}/profile.d/atse-lmod.sh
+%config %{_sysconfdir}/profile.d/atse-lmod.csh
 %{OHPC_PUB}
 %doc License README.md README_lua_modulefiles.txt INSTALL
 
