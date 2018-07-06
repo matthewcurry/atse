@@ -37,7 +37,7 @@ virtually any computer hardware and operating system.
 %setup -n %{pname}-%{version}
 
 %build
-./configure --prefix=%{install_path}
+CFLAGS="-fPIC -O3 -g" CXXFLAGS="-fPIC -O3 -g" ./configure --prefix=%{install_path}
 
 %install
 make %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT install
