@@ -9,7 +9,6 @@
 #----------------------------------------------------------------------------eh-
 
 %include %{_sourcedir}/OHPC_macros
-%{!?PROJ_DELIM: %global PROJ_DELIM -ohpc}
 
 Summary:   OpenHPC default login environments
 Name:      lmod-defaults-%{compiler_family}-%{mpi_family}%{PROJ_DELIM}
@@ -38,7 +37,7 @@ toolchain and %{mpi_family} MPI environment.
 mkdir -p %{buildroot}/%{OHPC_MODULES}
 %{__cat} << EOF > %{buildroot}/%{OHPC_MODULES}/ohpc
 #%Module1.0#####################################################################
-# Default OpenHPC environment
+# Default %{PROJ_NAME} environment
 #############################################################################
 
 proc ModulesHelp { } {
