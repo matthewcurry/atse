@@ -38,8 +38,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: lua >= %{luaver}
 BuildRequires: lua-devel >= %{luaver}
-BuildRequires: lua-filesystem%{PROJ_DELIM}
-BuildRequires: lua-posix%{PROJ_DELIM}
+BuildRequires: lua-filesystem-ohpc
+BuildRequires: lua-posix-ohpc
 
 BuildRequires: rsync
 BuildRequires: tcl
