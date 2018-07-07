@@ -23,7 +23,7 @@ Source: https://github.com/pmix/pmix/releases/download/v%{version}/pmix-%{versio
 Source1: OHPC_macros
 
 BuildRequires: libevent-devel
-BuildRequires: lmod-ohpc libtool-ohpc
+BuildRequires: lmod%{PROJ_DELIM} libtool%{PROJ_DELIM}
 BuildRequires: gcc-c++
 #!BuildIgnore: post-build-checks
 
