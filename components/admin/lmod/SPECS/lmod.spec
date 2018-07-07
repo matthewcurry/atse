@@ -38,8 +38,8 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 BuildRequires: lua >= %{luaver}
 BuildRequires: lua-devel >= %{luaver}
-BuildRequires: lua-filesystem%{OHPC_PROJ_DELIM}
-BuildRequires: lua-posix%{OHPC_PROJ_DELIM}
+BuildRequires: lua-filesystem%{PROJ_DELIM}
+BuildRequires: lua-posix%{PROJ_DELIM}
 
 BuildRequires: rsync
 BuildRequires: tcl
@@ -63,8 +63,12 @@ Patch2: lmod.site.patch
 # Known dependencies
 Requires: lua >= %{luaver}
 Requires: tcl
-Requires: lua-filesystem-ohpc
-Requires: lua-posix-ohpc
+
+# ATSE commenting out these lua 'distro_packages' to avoid conflicting
+# with the OHPC lua packages, which provide the same files in /usr/lib64.
+# This enables ATSE and OHPC to be installed at the same time.
+#Requires: lua-filesystem%{PROJ_DELIM}
+#Requires: lua-posix%{PROJ_DELIM}
 
 %define debug_package %{nil}
 
