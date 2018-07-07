@@ -35,7 +35,7 @@ toolchain and %{mpi_family} MPI environment.
 %install
 
 mkdir -p %{buildroot}/%{OHPC_MODULES}
-%{__cat} << EOF > %{buildroot}/%{OHPC_MODULES}/ohpc
+%{__cat} << EOF > %{buildroot}/%{OHPC_MODULES}/%{PROJ_NAME}
 #%Module1.0#####################################################################
 # Default %{PROJ_NAME} environment
 #############################################################################
