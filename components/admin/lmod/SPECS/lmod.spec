@@ -63,12 +63,8 @@ Patch2: lmod.site.patch
 # Known dependencies
 Requires: lua >= %{luaver}
 Requires: tcl
-
-# ATSE commenting out these lua 'distro_packages' to avoid conflicting
-# with the OHPC lua packages, which provide the same files in /usr/lib64.
-# This enables ATSE and OHPC to be installed at the same time.
-#Requires: lua-filesystem%{PROJ_DELIM}
-#Requires: lua-posix%{PROJ_DELIM}
+Requires: lua-filesystem-ohpc
+Requires: lua-posix-ohpc
 
 %define debug_package %{nil}
 
