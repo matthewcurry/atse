@@ -15,8 +15,8 @@
  stage_path     = join_path(var_path, "stage")
 -install_path   = join_path(prefix, "opt")
 -share_path     = join_path(prefix, "share", "spack")
-+install_path   = join_path("/", "opt", "ohpc", "pub")
-+share_path     = join_path("/", "opt", "ohpc", "pub")
++install_path   = join_path("/", "opt", "atse", "pub")
++share_path     = join_path("/", "opt", "atse", "pub")
  
  #
  # Set up the packages database.
