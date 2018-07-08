@@ -96,7 +96,7 @@ frontend.
 ln -s gmp-%{gmp_version} gmp
 ln -s mpc-%{mpc_version} mpc
 ln -s mpfr-%{mpfr_version} mpfr
-ln -s isl-%{mpfr_version} isl
+ln -s isl-%{isl_version} isl
 
 %build
 
