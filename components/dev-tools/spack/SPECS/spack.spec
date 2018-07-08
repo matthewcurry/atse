@@ -40,7 +40,7 @@ Requires: python2-mock
 %endif
 DocDir:    %{OHPC_PUB}/doc/contrib
 
-%global install_path %{OHPC_ADMIN}/%{pname}/%version
+%global install_path %{OHPC_PUB}/%{pname}/%version
 # Turn off the brp-python-bytecompile script
 %global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')
 
@@ -58,8 +58,8 @@ mkdir -p %{buildroot}%{install_path}
 rsync -av --exclude=.gitignore {etc,bin,lib,var,share,templates} %{buildroot}%{install_path}
 
 # OpenHPC module file
-%{__mkdir} -p %{buildroot}/%{OHPC_ADMIN}/modulefiles/spack
-%{__cat} << EOF > %{buildroot}/%{OHPC_ADMIN}/modulefiles/spack/%{version}
+%{__mkdir} -p %{buildroot}/%{OHPC_PUB}/modulefiles/spack
+%{__cat} << EOF > %{buildroot}/%{OHPC_PUB}/modulefiles/spack/%{version}
 #%Module1.0#####################################################################
 
 module-whatis "Name: Spack"
