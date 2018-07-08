@@ -41,8 +41,9 @@
 # Define subcomponent versions required for build
 
 %global gmp_version 6.1.2
-%global mpc_version 1.0.3
-%global mpfr_version 3.1.6
+%global mpc_version 1.1.0
+%global mpfr_version 4.0.1
+%global isl_version 0.18
 
 Summary:   The GNU C Compiler and Support Files
 Name:      %{pname}%{PROJ_DELIM}
@@ -56,8 +57,9 @@ Source0:   %{source}
 Source1:   https://ftp.gnu.org/gnu/gmp/gmp-%{gmp_version}.tar.bz2
 Source2:   https://ftp.gnu.org/gnu/mpc/mpc-%{mpc_version}.tar.gz
 Source3:   https://ftp.gnu.org/gnu/mpfr/mpfr-%{mpfr_version}.tar.gz
+Source4:   ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-%{isl_version}.tar.bz2
 %endif
-Source4:   OHPC_macros
+Source5:   OHPC_macros
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -94,12 +96,13 @@ frontend.
 ln -s gmp-%{gmp_version} gmp
 ln -s mpc-%{mpc_version} mpc
 ln -s mpfr-%{mpfr_version} mpfr
+ln -s isl-%{mpfr_version} isl
 
 %build
 
 %{__mkdir} obj
 cd obj
-../configure --disable-multilib --enable-languages="c,c++,fortran"  --prefix=%{install_path} --disable-static --enable-shared
+../configure --disable-multilib --enable-languages="c,c++,fortran" --prefix=%{install_path} --enable-lto --enable-gold --enable-ld
 make %{?_smp_mflags}
 %endif
 %install
