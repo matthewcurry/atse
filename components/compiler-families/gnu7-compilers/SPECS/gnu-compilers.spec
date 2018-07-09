@@ -103,7 +103,7 @@ ln -s isl-%{isl_version} isl
 
 %{__mkdir} obj
 cd obj
-../configure --prefix=%{install_path} --disable-multilib --enable-languages="c,c++,fortran" --enable-lto --with-quad --enable-gold=default --enable-ld
+../configure --prefix=%{install_path} --disable-multilib --enable-languages="c,c++,fortran" --enable-lto --with-quad --enable-gold --enable-ld
 make %{?_smp_mflags}
 %endif
 %install
