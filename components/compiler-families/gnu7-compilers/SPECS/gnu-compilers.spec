@@ -22,9 +22,9 @@
 %endif
 
 %if "%{compiler_family}" == "gnu7"
-%global gnu_version 7.3.0
+%global gnu_version 7.2.0
 %global gnu_major_ver 7
-%global gnu_release 1
+%global gnu_release 2
 %global pname gnu7-compilers
 %global source https://ftp.gnu.org/gnu/gcc/gcc-%{gnu_version}/gcc-%{gnu_version}.tar.xz
 %global source_directory gcc-%{version}
@@ -93,16 +93,11 @@ frontend.
 %if "%{compiler_family}" != "dts6"
 %setup -q -n %{source_directory} -a1 -a2 -a3 -a4
 
-ln -s gmp-%{gmp_version} gmp
-ln -s mpc-%{mpc_version} mpc
-ln -s mpfr-%{mpfr_version} mpfr
-ln -s isl-%{isl_version} isl
-
 %build
 
 %{__mkdir} obj
 cd obj
-../configure --disable-multilib --enable-languages="c,c++,fortran" --prefix=%{install_path} --enable-lto --enable-gold --enable-ld
+../configure --prefix=%{install_path} --with-gmp=gmp-%{gmp_version} --with-mpfr=mpfr-%{mpfr_version} --with-mpc=mpc-%{mpc_version} --with-isl=isl-%{isl_version} --disable-multilib --enable-languages="c,c++,fortran" --enable-lto --with-quad --enable-gold=default --enable-ld
 make %{?_smp_mflags}
 %endif
 %install
