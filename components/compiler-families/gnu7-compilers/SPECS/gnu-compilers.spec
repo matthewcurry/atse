@@ -75,6 +75,7 @@ BuildRequires:  zlib-devel
 %if 0%{?sles_version} || 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
+BuildRequires:  libstdc++-static
 Requires: glibc-devel
 
 
