@@ -93,14 +93,16 @@ frontend.
 %if "%{compiler_family}" != "dts6"
 %setup -q -n %{source_directory} -a1 -a2 -a3 -a4
 
+ln -s gmp-%{gmp_version} gmp
+ln -s mpc-%{mpc_version} mpc
+ln -s mpfr-%{mpfr_version} mpfr
+ln -s isl-%{isl_version} isl
+
 %build
 
 %{__mkdir} obj
 cd obj
-ls
-ls ..
-ls ../..
-../configure --prefix=%{install_path} --with-gmp=../../gmp-%{gmp_version} --with-mpfr=../../mpfr-%{mpfr_version} --with-mpc=../../mpc-%{mpc_version} --with-isl=../../isl-%{isl_version} --disable-multilib --enable-languages="c,c++,fortran" --enable-lto --with-quad --enable-gold=default --enable-ld
+../configure --prefix=%{install_path} --disable-multilib --enable-languages="c,c++,fortran" --enable-lto --with-quad --enable-gold=default --enable-ld
 make %{?_smp_mflags}
 %endif
 %install
