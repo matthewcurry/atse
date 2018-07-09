@@ -89,7 +89,7 @@ OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 %endif
 # Temporary fix, OpenBLAS does not autodetect aarch64
 %ifarch aarch64
-%define openblas_target TARGET=ARMV8 NUM_THREADS=256
+%define openblas_target TARGET=THUNDERX2T99 NUM_THREADS=256
 %endif
 
 make    %{?openblas_target} USE_THREAD=1 USE_OPENMP=1 \
