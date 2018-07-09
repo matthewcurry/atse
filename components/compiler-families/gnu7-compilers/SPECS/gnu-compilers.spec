@@ -97,7 +97,10 @@ frontend.
 
 %{__mkdir} obj
 cd obj
-../configure --prefix=%{install_path} --with-gmp=../gmp-%{gmp_version} --with-mpfr=../mpfr-%{mpfr_version} --with-mpc=../mpc-%{mpc_version} --with-isl=../isl-%{isl_version} --disable-multilib --enable-languages="c,c++,fortran" --enable-lto --with-quad --enable-gold=default --enable-ld
+ls
+ls ..
+ls ../..
+../configure --prefix=%{install_path} --with-gmp=../../gmp-%{gmp_version} --with-mpfr=../../mpfr-%{mpfr_version} --with-mpc=../../mpc-%{mpc_version} --with-isl=../../isl-%{isl_version} --disable-multilib --enable-languages="c,c++,fortran" --enable-lto --with-quad --enable-gold=default --enable-ld
 make %{?_smp_mflags}
 %endif
 %install
