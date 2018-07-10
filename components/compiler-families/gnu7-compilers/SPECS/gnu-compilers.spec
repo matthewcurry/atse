@@ -76,8 +76,9 @@ BuildRequires:  zlib-devel
 BuildRequires:  fdupes
 %endif
 BuildRequires:  libstdc++-static
-Requires: glibc-devel
+BuildRequires: binutils%{PROJ_DELIM}
 Requires: binutils%{PROJ_DELIM}
+Requires: glibc-devel
 
 
 %if "%{compiler_family}" == "dts6"
