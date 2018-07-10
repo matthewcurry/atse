@@ -45,10 +45,11 @@ The GNU Binary Utilities.
 %build
 #module load autotools
 ./configure --prefix=%{install_path} --disable-dependency-tracking --disable-werror --enable-interwork --enable-multilib --enable-shared --enable-64-bit-bfd --enable-targets=all --with-sysroot=/ --enable-gold --enable-ld --enable-plugins --enable-lto
+make %{_smp_mflags} MAKEINFO=true all
 
 %install
 #module load autotools
-make %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT install
+make %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT MAKEINFO=true install
 
 # OpenHPC module file
 %{__mkdir_p} %{buildroot}/%{OHPC_MODULES}/%{pname}
