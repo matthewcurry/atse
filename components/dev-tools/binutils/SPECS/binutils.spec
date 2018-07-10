@@ -11,6 +11,7 @@
 %include %{_sourcedir}/OHPC_macros
 
 %define pname binutils
+%define PNAME %(echo %{pname} | tr [a-z] [A-Z])
 
 Summary:   The GNU Binary Utilities
 Name:      %{pname}%{PROJ_DELIM}
