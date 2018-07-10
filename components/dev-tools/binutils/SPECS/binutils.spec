@@ -24,10 +24,9 @@ Source0:   https://ftp.gnu.org/gnu/binutils/%{pname}-%{version}.tar.gz
 Source1:   OHPC_macros
 BuildRoot: %{_tmppath}/%{pname}-%{version}-%{release}-root
 
-#BuildRequires: autoconf%{PROJ_DELIM} >= 2.69
-#BuildRequires: automake%{PROJ_DELIM} >= 1.15
-#BuildRequires: libtool%{PROJ_DELIM}  >= 2.4.6
-BuildRequires: autoconf, automake, libtool
+BuildRequires: autoconf%{PROJ_DELIM} >= 2.69
+BuildRequires: automake%{PROJ_DELIM} >= 1.15
+BuildRequires: libtool%{PROJ_DELIM}  >= 2.4.6
 BuildRequires: m4
 BuildRequires: flex
 BuildRequires: bison
@@ -43,12 +42,12 @@ The GNU Binary Utilities.
 %setup -n %{pname}-%{version}
 
 %build
-#module load autotools
+module load autotools
 ./configure --prefix=%{install_path} --disable-dependency-tracking --disable-werror --enable-interwork --enable-multilib --enable-shared --enable-64-bit-bfd --enable-targets=all --with-sysroot=/ --enable-gold --enable-ld --enable-plugins --enable-lto
 make %{_smp_mflags} MAKEINFO=true all
 
 %install
-#module load autotools
+module load autotools
 make %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT MAKEINFO=true install
 
 # OpenHPC module file
@@ -87,6 +86,9 @@ EOF
 %defattr(-,root,root,-)
 %{OHPC_PUB}
 %doc ChangeLog
+%doc COPYING
+%doc COPYING.LIB
+%doc COPYING3
+%doc COPYING3.LIB
 %doc MAINTAINERS
-%doc NEWS
 %doc README
