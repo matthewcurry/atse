@@ -12,6 +12,7 @@
 %include %{_sourcedir}/OHPC_macros
 
 %define pname zlib
+%define PNAME %(echo %{pname} | tr [a-z] [A-Z])
 
 Summary:   A lossless data-compression library
 Name:      %{pname}%{PROJ_DELIM}

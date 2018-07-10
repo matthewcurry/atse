@@ -22,9 +22,9 @@
 %endif
 
 %if "%{compiler_family}" == "gnu7"
-%global gnu_version 7.3.0
+%global gnu_version 7.2.0
 %global gnu_major_ver 7
-%global gnu_release 1
+%global gnu_release 2
 %global pname gnu7-compilers
 %global source https://ftp.gnu.org/gnu/gcc/gcc-%{gnu_version}/gcc-%{gnu_version}.tar.xz
 %global source_directory gcc-%{version}
@@ -41,8 +41,9 @@
 # Define subcomponent versions required for build
 
 %global gmp_version 6.1.2
-%global mpc_version 1.0.3
-%global mpfr_version 3.1.6
+%global mpc_version 1.1.0
+%global mpfr_version 4.0.1
+%global isl_version 0.18
 
 Summary:   The GNU C Compiler and Support Files
 Name:      %{pname}%{PROJ_DELIM}
@@ -56,8 +57,9 @@ Source0:   %{source}
 Source1:   https://ftp.gnu.org/gnu/gmp/gmp-%{gmp_version}.tar.bz2
 Source2:   https://ftp.gnu.org/gnu/mpc/mpc-%{mpc_version}.tar.gz
 Source3:   https://ftp.gnu.org/gnu/mpfr/mpfr-%{mpfr_version}.tar.gz
+Source4:   ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-%{isl_version}.tar.bz2
 %endif
-Source4:   OHPC_macros
+Source5:   OHPC_macros
 
 BuildRequires:  bison
 BuildRequires:  flex
@@ -73,6 +75,9 @@ BuildRequires:  zlib-devel
 %if 0%{?sles_version} || 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
+BuildRequires:  libstdc++-static
+BuildRequires: binutils%{PROJ_DELIM}
+Requires: binutils%{PROJ_DELIM}
 Requires: glibc-devel
 
 
@@ -89,21 +94,25 @@ frontend.
 
 %prep
 %if "%{compiler_family}" != "dts6"
-%setup -q -n %{source_directory} -a1 -a2 -a3
+%setup -q -n %{source_directory} -a1 -a2 -a3 -a4
 
 ln -s gmp-%{gmp_version} gmp
 ln -s mpc-%{mpc_version} mpc
 ln -s mpfr-%{mpfr_version} mpfr
+ln -s isl-%{isl_version} isl
 
 %build
 
+module load binutils
 %{__mkdir} obj
 cd obj
-../configure --disable-multilib --enable-languages="c,c++,fortran"  --prefix=%{install_path} --disable-static --enable-shared
+../configure --prefix=%{install_path} --disable-multilib --enable-languages="c,c++,fortran" --enable-lto --with-quad --enable-gold --enable-ld
 make %{?_smp_mflags}
 %endif
+
 %install
 %if "%{compiler_family}" != "dts6"
+module load binutils
 cd obj
 make %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT install
 
