@@ -31,6 +31,7 @@ BuildRequires: m4
 BuildRequires: flex
 BuildRequires: bison
 BuildRequires: gettext
+BuildRequires: libstdc++-static
 
 %define install_path %{OHPC_UTILS}/%{pname}/%{version}
 
@@ -42,7 +43,7 @@ The GNU Binary Utilities.
 
 %build
 module load autotools
-./configure --prefix=%{install_path} --disable-dependency-tracking --disable-werror --enable-interwork --enable-multilib --enable-shared --enable-64-bit-bfd --enable-targets=all --with-sysroot=/ --enable-gold --enable-plugins
+./configure --prefix=%{install_path} --disable-dependency-tracking --disable-werror --enable-interwork --enable-multilib --enable-shared --enable-64-bit-bfd --enable-targets=all --with-sysroot=/ --enable-gold --enable-plugins --enable-lto
 
 %install
 module load autotools
