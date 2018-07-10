@@ -32,6 +32,8 @@ BuildRequires: flex
 BuildRequires: bison
 BuildRequires: gettext
 
+%define install_path %{OHPC_UTILS}/%{pname}/%{version}
+
 %description
 The GNU Binary Utilities.
 
