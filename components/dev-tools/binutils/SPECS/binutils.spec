@@ -44,7 +44,7 @@ The GNU Binary Utilities.
 
 %build
 #module load autotools
-./configure --prefix=%{install_path} --disable-dependency-tracking --disable-werror --enable-interwork --enable-multilib --enable-shared --enable-64-bit-bfd --enable-targets=all --with-sysroot=/ --enable-gold --enable-plugins --enable-lto
+./configure --prefix=%{install_path} --disable-dependency-tracking --disable-werror --enable-interwork --enable-multilib --enable-shared --enable-64-bit-bfd --enable-targets=all --with-sysroot=/ --enable-gold --enable-ld --enable-plugins --enable-lto
 
 %install
 #module load autotools
