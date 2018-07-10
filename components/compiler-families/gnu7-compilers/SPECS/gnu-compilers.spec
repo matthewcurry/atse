@@ -104,8 +104,6 @@ ln -s isl-%{isl_version} isl
 %build
 
 module load binutils
-which ld
-which ld.gold
 %{__mkdir} obj
 cd obj
 ../configure --prefix=%{install_path} --disable-multilib --enable-languages="c,c++,fortran" --enable-lto --with-quad --enable-gold --enable-ld
