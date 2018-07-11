@@ -58,9 +58,10 @@ pwd
 
 find .
 
-if [ "$(sha256sum autoconf-%{version}.tar.gz)" != "954bd69b391edc12d6a4a51a2dd1476543da5c6bbf05a95b59dc0dd6fd4c2968" ]; then
+filename=%{S:autoconf-%{version}.tar.gz}
+if [ "$(sha256sum $filename)" != "954bd69b391edc12d6a4a51a2dd1476543da5c6bbf05a95b59dc0dd6fd4c2969" ]; then
     echo "Could not verify file"
-    #exit 1
+    exit 1
 fi
 %setup -n autoconf-%{version}
 
