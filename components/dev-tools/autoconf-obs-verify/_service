@@ -23,6 +23,7 @@ permissions and limitations under the License.
 
     <param name="subdir">components</param>
     <param name="revision">verify</param>
+    <param name="include">dev[-]tools</param>
     <param name="include">OHPC_macros</param>
 
     <!-- End INPUT ######################################    -->
