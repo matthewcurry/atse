@@ -54,4 +54,9 @@ permissions and limitations under the License.
     <param name="enforceupstream">yes</param>
   </service>
 
+  <service name="verify_file">
+    <param name="file">autoconf-2.69.tar.gz</param>
+    <param name="verifier">sha256</param>
+    <param name="checksum">954bd69b391edc12d6a4a51a2dd1476543da5c6bbf05a95b59dc0dd6fd4c2969</param>
+  </service>
 </services>
