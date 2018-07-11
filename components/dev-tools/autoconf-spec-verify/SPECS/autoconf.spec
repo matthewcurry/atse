@@ -53,7 +53,7 @@ Autoconf is only required for the generation of the scripts, not
 their use.
 
 %prep
-if [ "$(md5sum autoconf-%{version})" != "954bd69b391edc12d6a4a51a2dd1476543da5c6bbf05a95b59dc0dd6fd4c2969" ]; then
+if [ "$(md5sum autoconf-%{version})" != "954bd69b391edc12d6a4a51a2dd1476543da5c6bbf05a95b59dc0dd6fd4c2968" ]; then
     echo "Could not verify file"
     exit 1
 fi
