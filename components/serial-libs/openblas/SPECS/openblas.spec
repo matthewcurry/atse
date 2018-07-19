@@ -111,7 +111,7 @@ sed -i 's|%{buildroot}||g' %{buildroot}%{install_path}/lib/cmake/openblas/OpenBL
 sed -i 's|%{buildroot}||g' %{buildroot}%{install_path}/lib/pkgconfig/openblas.pc
 
 # Remove static lib
-rm -f %{buildroot}%{install_path}/lib/*a
+#rm -f %{buildroot}%{install_path}/lib/*a
 
 # OpenHPC module file
 %{__mkdir} -p %{buildroot}%{OHPC_MODULEDEPS}/%{compiler_family}/%{pname}
