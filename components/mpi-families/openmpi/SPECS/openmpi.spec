@@ -124,7 +124,7 @@ Open MPI jobs.
 %ohpc_setup_compiler
 
 
-BASEFLAGS="--prefix=%{install_path} --disable-static --enable-builtin-atomics --with-sge --enable-mpi-cxx"
+BASEFLAGS="--prefix=%{install_path} --enable-builtin-atomics --with-sge --enable-mpi-cxx"
 
 # build against external pmix and libevent
 %if 0%{with_pmix}
