@@ -110,7 +110,7 @@ export CC=mpicc
     --enable-dap \
     --with-pic \
     --disable-doxygen \
-    --disable-static || { cat config.log && exit 1; }
+    --enable-static || { cat config.log && exit 1; }
 
 # karl@ices.utexas.edu (5/17/18) - switching to serial make to avoid
 # problems. Others also reporing error with parallel build.

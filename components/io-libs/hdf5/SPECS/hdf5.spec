@@ -83,7 +83,7 @@ cp /usr/lib/rpm/config.guess bin
 
 ./configure --prefix=%{install_path} \
 	    --enable-fortran         \
-            --enable-static=no       \
+            --enable-static=yes      \
 	    --enable-shared          \
 	    --enable-cxx             \
 	    --enable-fortran2003    || { cat config.log && exit 1; }
@@ -99,8 +99,6 @@ export NO_BRP_CHECK_RPATH=true
 
 make %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT install
 
-# Remove static libraries
-find "%buildroot" -type f -name "*.la" | xargs rm -f
 find "%buildroot"
 
 # OpenHPC module file
