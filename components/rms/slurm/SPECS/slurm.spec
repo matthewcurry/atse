@@ -19,7 +19,7 @@
 # $Id$
 #
 Name:		%{pname}%{PROJ_DELIM}
-Version:	17.11.7
+Version:	17.11.8
 %global rel	1
 Release:	%{rel}%{?dist}
 Summary:	Slurm Workload Manager
@@ -36,7 +36,6 @@ URL:		https://slurm.schedmd.com/
 %endif
 
 Source:		https://download.schedmd.com/slurm/%{slurm_source_dir}.tar.bz2
-Source1:    OHPC_macros
 
 # build options		.rpmmacros options	change to default action
 # ====================  ====================	========================
@@ -195,7 +194,6 @@ BuildRequires: numactl-devel
 #  into non-standard locations (e.g. /usr/local)
 #
 %define __os_install_post /usr/lib/rpm/brp-compress
-%define debug_package %{nil}
 
 #
 # Should unpackaged files in a build root terminate a build?
@@ -382,7 +380,6 @@ chmod +x find-requires.sh
 %global _use_internal_dependency_generator 0
 %global __find_requires %{_builddir}/%{buildsubdir}/find-requires.sh
 
-rm -rf %{buildroot}
 make install DESTDIR=%{buildroot}
 make install-contrib DESTDIR=%{buildroot}
 
@@ -536,14 +533,8 @@ touch $LIST
 	echo /lib64/security/pam_slurm_adopt.so		>>$LIST
 %endif
 mkdir -p $RPM_BUILD_ROOT/%{_docdir}
-#############################################################################
-
-%clean
-rm -rf %{buildroot}
-#############################################################################
 
 %files -f slurm.files
-%defattr(-,root,root,0755)
 %{_datadir}/doc
 %{_bindir}/s*
 %exclude %{_bindir}/seff
@@ -566,7 +557,6 @@ rm -rf %{buildroot}
 #############################################################################
 
 %files -n %{pname}-example-configs%{PROJ_DELIM}
-%defattr(-,root,root,0755)
 %dir %{_sysconfdir}
 %if %{with cray}
 %config %{_sysconfdir}/plugstack.conf.template
@@ -605,7 +595,6 @@ rm -rf %{buildroot}
 #############################################################################
 
 %files -n %{pname}-devel%{PROJ_DELIM}
-%defattr(-,root,root)
 %dir %attr(0755,root,root)
 %dir %{_prefix}/include/slurm
 %{_prefix}/include/slurm/*
@@ -614,7 +603,6 @@ rm -rf %{buildroot}
 #############################################################################
 
 %files -n %{pname}-perlapi%{PROJ_DELIM}
-%defattr(-,root,root)
 %{_perldir}/Slurm.pm
 %{_perldir}/Slurm/Bitstr.pm
 %{_perldir}/Slurm/Constant.pm
@@ -628,27 +616,23 @@ rm -rf %{buildroot}
 #############################################################################
 
 %files -n %{pname}-slurmctld%{PROJ_DELIM}
-%defattr(-,root,root)
 %{_sbindir}/slurmctld
 %{_unitdir}/slurmctld.service
 #############################################################################
 
 %files -n %{pname}-slurmd%{PROJ_DELIM}
-%defattr(-,root,root)
 %{_sbindir}/slurmd
 %{_sbindir}/slurmstepd
 %{_unitdir}/slurmd.service
 #############################################################################
 
 %files -n %{pname}-slurmdbd%{PROJ_DELIM}
-%defattr(-,root,root)
 %{_sbindir}/slurmdbd
 %{_libdir}/slurm/accounting_storage_mysql.so
 %{_unitdir}/slurmdbd.service
 #############################################################################
 
 %files -n %{pname}-libpmi%{PROJ_DELIM}
-%defattr(-,root,root)
 %if %{with cray}
 %{_libdir}/slurmpmi/*
 %else
@@ -657,7 +641,6 @@ rm -rf %{buildroot}
 #############################################################################
 
 %files -n %{pname}-torque%{PROJ_DELIM}
-%defattr(-,root,root)
 %{_bindir}/pbsnodes
 %{_bindir}/qalter
 %{_bindir}/qdel
@@ -673,7 +656,6 @@ rm -rf %{buildroot}
 #############################################################################
 
 %files -n %{pname}-openlava%{PROJ_DELIM}
-%defattr(-,root,root)
 %{_bindir}/bjobs
 %{_bindir}/bkill
 %{_bindir}/bsub
@@ -681,7 +663,6 @@ rm -rf %{buildroot}
 #############################################################################
 
 %files -n %{pname}-contribs%{PROJ_DELIM}
-%defattr(-,root,root)
 %{_bindir}/seff
 %{_bindir}/sjobexitmod
 %{_bindir}/sjstat
@@ -690,14 +671,12 @@ rm -rf %{buildroot}
 #############################################################################
 
 %files -n %{pname}-sview%{PROJ_DELIM}
-%defattr(-,root,root)
 %{_mandir}/man1/sview*
 %{_bindir}/sview
 #############################################################################
 
 %if %{with pam}
 %files -f pam.files -n %{pname}-pam_slurm%{PROJ_DELIM}
-%defattr(-,root,root)
 %endif
 #############################################################################
 
