@@ -166,7 +166,7 @@ make %{?_smp_mflags}
 make %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT install
 # Remove .la files detected by rpm
 
-rm $RPM_BUILD_ROOT/%{install_path}/lib/*.la
+#rm $RPM_BUILD_ROOT/%{install_path}/lib/*.la
 
 # rename prun to avoid namespace conflict with ohpc
 %{__mv} $RPM_BUILD_ROOT/%{install_path}/bin/prun $RPM_BUILD_ROOT/%{install_path}/bin/prun.ompi
