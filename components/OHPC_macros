@@ -86,6 +86,10 @@ Requires:      gcc-c++ intel-compilers-devel%{PROJ_DELIM}
 BuildRequires: intel_licenses
 %endif
 %endif
+%if "%{compiler_family}" == "arm"
+BuildRequires: arm-compilers%{PROJ_DELIM}
+Requires:      arm-compilers%{PROJ_DELIM}
+%endif
 %if "%{compiler_family}" == "dts6"
 BuildRequires: devtoolset-6
 Requires:      devtoolset-6
