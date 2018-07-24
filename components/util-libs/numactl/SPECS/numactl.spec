@@ -26,7 +26,7 @@ Source0:   https://github.com/numactl/numactl/releases/download/v%{version}/numa
 Source1:   OHPC_macros
 BuildRoot: %{_tmppath}/%{pname}-%{version}-%{release}-root
 
-BuildRequires: automake, autoconf, libtool
+BuildRequires: autoconf, automake, libtool, m4
 
 %define install_path %{OHPC_LIBS}/numactl
 
