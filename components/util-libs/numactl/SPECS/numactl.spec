@@ -23,7 +23,6 @@ Group:     %{PROJ_NAME}/libs
 DocDir:    %{OHPC_PUB}/doc/contrib
 URL:       https://github.com/numactl/numactl/
 Source0:   https://github.com/numactl/numactl/releases/download/v%{version}/numactl-%{version}.tar.gz
-Source1:   OHPC_macros
 BuildRoot: %{_tmppath}/%{pname}-%{version}-%{release}-root
 
 BuildRequires: autoconf, automake, libtool, m4
