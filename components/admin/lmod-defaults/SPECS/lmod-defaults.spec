@@ -9,17 +9,16 @@
 #----------------------------------------------------------------------------eh-
 
 %include %{_sourcedir}/OHPC_macros
+%define PROJ_NAME_ALLCAPS %(echo %{PROJ_NAME} | tr [a-z] [A-Z])
 
-Summary:   OpenHPC default login environments
+Summary:   %{PROJ_NAME_ALLCAPS} default login environments
 Name:      lmod-defaults-%{compiler_family}-%{mpi_family}%{PROJ_DELIM}
-Version:   1.3.3
+Version:   1.0.0
 Release:   1
 License:   Apache-2.0
 Group:     %{PROJ_NAME}/admin
 URL:       https://github.com/openhpc/ohpc
 BuildArch: noarch
-Source0:   OHPC_macros
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires: lmod%{PROJ_DELIM}
 
 
@@ -37,7 +36,7 @@ toolchain and %{mpi_family} MPI environment.
 mkdir -p %{buildroot}/%{OHPC_MODULES}
 %{__cat} << EOF > %{buildroot}/%{OHPC_MODULES}/%{PROJ_NAME}
 #%Module1.0#####################################################################
-# Default %{PROJ_NAME} environment
+# Default %{PROJ_NAME_ALLCAPS} environment
 #############################################################################
 
 proc ModulesHelp { } {
@@ -53,7 +52,7 @@ prepend-path     PATH   %{OHPC_PUB}/bin
 if { [ expr [module-info mode load] || [module-info mode display] ] } {
         prepend-path MANPATH /usr/local/share/man:/usr/share/man/overrides:/usr/share/man/en:/usr/share/man
         module try-add autotools
-        module try-add prun
+        module try-add binutils
         module try-add %{compiler_family}
         module try-add %{mpi_family}
 }
@@ -61,16 +60,12 @@ if { [ expr [module-info mode load] || [module-info mode display] ] } {
 if [ module-info mode remove ] {
         module del %{mpi_family}
         module del %{compiler_family}
-        module del prun
+        module del binutils
         module del autotools
 }
 EOF
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
-%defattr(-,root,root,-)
 %dir %{OHPC_HOME}
 %dir %{OHPC_PUB}
 %{OHPC_MODULES}
