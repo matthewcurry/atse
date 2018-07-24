@@ -64,6 +64,9 @@ BuildRequires: %{PROJ_NAME}-buildroot
 # Compiler dependencies
 %if 0%{?ohpc_compiler_dependent} == 1
 
+BuildRequires: binutils%{PROJ_DELIM}
+Requires:      binutils%{PROJ_DELIM}
+
 %if "%{compiler_family}" == "gnu8"
 BuildRequires: gnu8-compilers%{PROJ_DELIM} >= 8.1.0
 Requires:      gnu8-compilers%{PROJ_DELIM} >= 8.1.0

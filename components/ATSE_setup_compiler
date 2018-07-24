@@ -25,27 +25,28 @@ if [ -z "$OHPC_COMPILER_FAMILY" ]; then
     exit 1
 fi
 
+# Always start from a clean module environment and load binutils
+module purge
+module load binutils
+
 export toolset=gcc
 if [ "$OHPC_COMPILER_FAMILY" = "gnu" ]; then
     export CC=gcc
     export CXX=g++
     export FC=gfortran
     export F77=gfortran
-    module purge
     module load gnu
 elif [ "$OHPC_COMPILER_FAMILY" = "gnu7" ]; then
     export CC=gcc
     export CXX=g++
     export FC=gfortran
     export F77=gfortran
-    module purge
     module load gnu7
 elif [ "$OHPC_COMPILER_FAMILY" = "gnu8" ]; then
     export CC=gcc
     export CXX=g++
     export FC=gfortran
     export F77=gfortran
-    module purge
     module load gnu8
 elif [ "$OHPC_COMPILER_FAMILY" = "intel" ]; then
     export toolset=intel-linux
@@ -53,7 +54,6 @@ elif [ "$OHPC_COMPILER_FAMILY" = "intel" ]; then
     export CXX=icpc
     export FC=ifort
     export F77=ifort
-    module purge
     module load intel
 elif [ "$OHPC_COMPILER_FAMILY" = "dts6" ]; then
     # dts is the devtoolset-6 software collection
@@ -63,7 +63,6 @@ elif [ "$OHPC_COMPILER_FAMILY" = "dts6" ]; then
     export CXX=g++
     export FC=gfortran
     export F77=gfortran
-    module purge
     module load gnu/6
 elif [ "$OHPC_COMPILER_FAMILY" = "llvm" ]; then
     export toolset=clang
@@ -71,7 +70,6 @@ elif [ "$OHPC_COMPILER_FAMILY" = "llvm" ]; then
     export CXX=clang++
     export FC=flang
     export F77=flang
-    module purge
     module load llvm
 else
     echo "Unsupported OHPC_COMPILER_FAMILY -> $OHPC_COMPILER_FAMILY"
