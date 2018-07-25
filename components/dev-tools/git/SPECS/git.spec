@@ -37,7 +37,7 @@ Requires: less
 Requires: openssl
 Requires: openssh-clients
 Requires: pcre
-Requires: perl
+Requires: perl(Error)
 Requires: rsync
 Requires: tk
 Requires: zlib
