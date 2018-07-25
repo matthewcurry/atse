@@ -42,8 +42,8 @@ Requires: rsync
 Requires: tk
 Requires: zlib
 
+# Don't do automatic provides detection
 AutoProv: no
-Provides: %{pname}%{PROJ_DELIM}
 
 %description
 Git distributed revision control system
