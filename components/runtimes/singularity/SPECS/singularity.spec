@@ -37,7 +37,7 @@
 %define PNAME SINGULARITY
 
 # This allows us to pick up the default value from the configure
-%{!?with_slurm: %global with_slurm yes}
+%{!?with_slurm: %global with_slurm no}
 %if "%{with_slurm}" == "yes"
 %global slurm 1
 %else
