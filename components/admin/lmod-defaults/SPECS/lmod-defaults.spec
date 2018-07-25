@@ -51,6 +51,7 @@ prepend-path     PATH   %{OHPC_PUB}/bin
 
 if { [ expr [module-info mode load] || [module-info mode display] ] } {
         prepend-path MANPATH /usr/local/share/man:/usr/share/man/overrides:/usr/share/man/en:/usr/share/man
+        module try-add git
         module try-add autotools
         module try-add cmake
         module try-add binutils
@@ -64,6 +65,7 @@ if [ module-info mode remove ] {
         module del binutils
         module del cmake
         module del autotools
+        module del git
 }
 EOF
 
