@@ -37,13 +37,14 @@ Bison is a general-purpose parser generator that converts an annotated context-f
 %prep
 %setup -q -n %{pname}-%{version}
 
-./configure --prefix=%{install_path}/bin
 
 %build
+./configure --prefix=%{install_path}
+
 %{__make} %{?mflags}
 
 %install
-%{__make} install
+%{__make} %{?_smp_mflags} DESTDIR=$RPM_BUILD_ROOT install
 
 # Module file
 %{__mkdir_p} %{buildroot}%{OHPC_MODULES}/%{pname}
